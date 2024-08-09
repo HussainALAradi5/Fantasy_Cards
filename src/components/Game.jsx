@@ -106,10 +106,7 @@ const Game = () => {
         {difficulty === 'challenging' && remainingTurns !== null && (
           <>
             <p>Elapsed Time: {elapsedTime}s</p>
-            <p>
-              Remaining Time: {Math.floor(remainingTime / 60)}:
-              {remainingTime % 60}
-            </p>
+            <p>Remaining Time: {remainingTime} s</p>
             <p>Remaining Turns: {remainingTurns}</p>
           </>
         )}
