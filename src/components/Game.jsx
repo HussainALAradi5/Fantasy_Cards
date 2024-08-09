@@ -40,7 +40,7 @@ const Game = () => {
     setSecondCard(null)
     setGameOver(false)
     setSelected(false)
-    setDifficultySelected(true) // Mark difficulty as selected after shuffle
+    setDifficultySelected(true)
   }
 
   const isFlipped = (card) => {
@@ -104,21 +104,24 @@ const Game = () => {
   return (
     <div className="game">
       <div className="gamePanel">
-        {difficultySelected && <button onClick={shuffle}>Restart</button>}
-        <p>Turns: {turns}</p>
-        <Difficulties
-          setDifficulty={(difficulty) => {
-            setDifficulty(difficulty)
-            setDifficultySelected(false)
-            shuffle()
-          }}
-          setGameOver={setGameOver}
-          setTurns={setTurns}
-          shuffle={shuffle}
-          setElapsedTime={setElapsedTime}
-          setRemainingTime={setRemainingTime}
-          setRemainingTurns={setRemainingTurns}
-        />
+        {difficultySelected && !gameOver && (
+          <button onClick={shuffle}>Restart</button>
+        )}
+        {!difficultySelected && !gameOver && (
+          <Difficulties
+            setDifficulty={(difficulty) => {
+              setDifficulty(difficulty)
+              setDifficultySelected(true)
+              shuffle()
+            }}
+            setGameOver={setGameOver}
+            setTurns={setTurns}
+            shuffle={shuffle}
+            setElapsedTime={setElapsedTime}
+            setRemainingTime={setRemainingTime}
+            setRemainingTurns={setRemainingTurns}
+          />
+        )}
         {difficulty === 'normal' && (
           <>
             <p>
@@ -135,7 +138,22 @@ const Game = () => {
             </p>
           </>
         )}
-        {gameOver && <p>Game Over!</p>}
+        {gameOver && !difficultySelected && (
+          <Difficulties
+            setDifficulty={(difficulty) => {
+              setDifficulty(difficulty)
+              setDifficultySelected(true)
+              shuffle()
+            }}
+            setGameOver={setGameOver}
+            setTurns={setTurns}
+            shuffle={shuffle}
+            setElapsedTime={setElapsedTime}
+            setRemainingTime={setRemainingTime}
+            setRemainingTurns={setRemainingTurns}
+          />
+        )}
+        {gameOver && <p>Game Over! Refresh to play again.</p>}
       </div>
       {!gameOver ? (
         <div className="card-grid">
