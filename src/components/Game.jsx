@@ -130,7 +130,7 @@ const Game = () => {
             <p>Elapsed Time: {elapsedTime}s</p>
             <p>
               Remaining Time: {Math.floor(remainingTime / 60)}:
-              {remainingTime % 60}
+              {remainingTime % 60} minutes
             </p>
           </>
         )}

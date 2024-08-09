@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const Difficulties = ({
-  setDifficulty,
-  setGameOver,
-  setTurns,
-  setCards,
-  shuffle
-}) => {
+const Difficulties = ({ setDifficulty, setGameOver, setTurns, shuffle }) => {
   const [difficulty, setLocalDifficulty] = useState('easy')
   const [timer, setTimer] = useState(null)
   const [remainingTurns, setRemainingTurns] = useState(null)
@@ -17,20 +11,24 @@ const Difficulties = ({
     } else if (difficulty === 'challenging') {
       setRemainingTurns(20)
     } else {
-      clearInterval(timer)
+      stopTimer()
     }
 
-    return () => clearInterval(timer)
+    return () => stopTimer()
   }, [difficulty])
 
   const startTimer = () => {
-    const newTimer = setInterval(() => {}, 1000)
-    setTimer(newTimer)
+    if (difficulty === 'normal') {
+      const newTimer = setInterval(() => {}, 1000)
+      setTimer(newTimer)
+    }
   }
 
   const stopTimer = () => {
-    clearInterval(timer)
-    setTimer(null)
+    if (timer) {
+      clearInterval(timer)
+      setTimer(null)
+    }
   }
 
   const handleDifficultyChange = (diff) => {
