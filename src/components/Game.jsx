@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import Card from './Cards'
 const Game = () => {
   const images = [
     { src: '/img/angry_troll.png' },
@@ -12,6 +12,7 @@ const Game = () => {
   ]
   const [cards, setCards] = useState([])
   const [turns, setTurns] = useState(0)
+
   const shuffle = () => {
     const shuffledCards = [...images, ...images]
       .sort(() => Math.random() - 0.5)
@@ -19,6 +20,7 @@ const Game = () => {
     setCards(shuffledCards)
     setTurns(0)
   }
+
   console.log('cards:', cards, 'turns:', turns)
 
   return (
@@ -27,14 +29,11 @@ const Game = () => {
 
       <div className="card-grid">
         {cards.map((card) => (
-          <div key={card.id} className="card">
-            <img src={card.src} className="front" alt="card-front" />
-            <img src="/img/cover.png" alt="card-back" className="back" />
-            <div></div>
-          </div>
+          <Card key={card.id} card={card} />
         ))}
       </div>
     </div>
   )
 }
+
 export default Game
