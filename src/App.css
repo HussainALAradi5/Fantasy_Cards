@@ -31,7 +31,8 @@ button:hover {
   background-color: darkblue;
   color: wheat;
   border-color: darkblue;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  box-shadow: 1rem 1rem 1rem black;
+  transition: 1.5s;
 }
 
 .mainContainer-h1:hover {
@@ -94,7 +95,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(28, 51, 28, 0.7);
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
@@ -109,13 +110,14 @@ p {
 
 .difficulties button {
   margin: 0.5rem;
+}
+
+.difficulties button,
+.gamePanel button {
   background-color: #444;
 }
 
-.difficulties button:hover {
+.difficulties button:hover,
+.gamePanel button:hover {
   background-color: #222;
-}
-
-.gamePanel button {
-  margin-top: 1rem;
 }

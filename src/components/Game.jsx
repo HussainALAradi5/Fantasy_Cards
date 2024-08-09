@@ -102,7 +102,7 @@ const Game = () => {
   return (
     <div className="game">
       <div className="gamePanel">
-        <button onClick={shuffle}>New Game</button>
+        <button onClick={shuffle}>restart</button>
         <p>Turns: {turns}</p>
         <Difficulties
           setDifficulty={setDifficulty}
