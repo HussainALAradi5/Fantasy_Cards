@@ -1,3 +1,4 @@
+/* Existing styles */
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 body {
@@ -131,14 +132,17 @@ p:hover {
   background-color: #222;
 }
 
+/* Tablet and mobile styles */
 @media (max-width: 768px) {
   .app {
     margin: 20px;
   }
 
   .card-grid {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
   }
 
   .card {
@@ -167,8 +171,8 @@ p:hover {
   }
 
   .card-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
   }
 
   .card {

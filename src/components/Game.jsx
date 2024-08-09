@@ -28,6 +28,12 @@ const Game = () => {
   const [pairsRemaining, setPairsRemaining] = useState(0)
   const [gameWon, setGameWon] = useState(false)
 
+  useEffect(() => {
+    setPairsRemaining(
+      difficulty === 'easy' ? 3 : difficulty === 'normal' ? 5 : 6
+    )
+  }, [difficulty])
+
   const shuffle = () => {
     const shuffledCards = [...images, ...images]
       .sort(() => Math.random() - 0.5)
@@ -43,11 +49,7 @@ const Game = () => {
     setSecondCard(null)
     setGameOver(false)
     setSelected(false)
-    setDifficultySelected(true)
     setPairsFound(0)
-    setPairsRemaining(
-      difficulty === 'easy' ? 3 : difficulty === 'normal' ? 5 : 6
-    )
     setGameWon(false)
   }
 
