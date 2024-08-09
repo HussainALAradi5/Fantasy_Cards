@@ -150,7 +150,8 @@ p:hover {
     font-size: 1.5rem;
   }
 
-  .over {
+  .over,
+  .winMessage {
     font-size: 3rem;
   }
 

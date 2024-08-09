@@ -24,6 +24,9 @@ const Game = () => {
   const [gameOver, setGameOver] = useState(false)
   const [remainingTurns, setRemainingTurns] = useState(null)
   const [difficultySelected, setDifficultySelected] = useState(false)
+  const [pairsFound, setPairsFound] = useState(0)
+  const [pairsRemaining, setPairsRemaining] = useState(0)
+  const [gameWon, setGameWon] = useState(false)
 
   const shuffle = () => {
     const shuffledCards = [...images, ...images]
@@ -41,6 +44,11 @@ const Game = () => {
     setGameOver(false)
     setSelected(false)
     setDifficultySelected(true)
+    setPairsFound(0)
+    setPairsRemaining(
+      difficulty === 'easy' ? 3 : difficulty === 'normal' ? 5 : 6
+    )
+    setGameWon(false)
   }
 
   const isFlipped = (card) => {
@@ -48,7 +56,7 @@ const Game = () => {
   }
 
   const handleCard = (card) => {
-    if (selected || card === firstCard || gameOver) return
+    if (selected || card === firstCard || gameOver || gameWon) return
 
     firstCard ? setSecondCard(card) : setFirstCard(card)
   }
@@ -62,12 +70,18 @@ const Game = () => {
             card.src === firstCard.src ? { ...card, matched: true } : card
           )
         )
-        newTurn()
+        setPairsFound((prev) => prev + 1)
+        setPairsRemaining((prev) => prev - 1)
+        if (pairsRemaining === 1) {
+          setGameWon(true)
+        } else {
+          newTurn()
+        }
       } else {
         setTimeout(() => newTurn(), 2000)
       }
     }
-  }, [firstCard, secondCard, cards])
+  }, [firstCard, secondCard, cards, pairsRemaining])
 
   const newTurn = () => {
     setFirstCard(null)
@@ -76,7 +90,7 @@ const Game = () => {
     setSelected(false)
     if (difficulty === 'challenging' && remainingTurns !== null) {
       setRemainingTurns((prev) => prev - 1)
-      if (remainingTurns <= 0) {
+      if (remainingTurns <= 1) {
         setGameOver(true)
       }
     }
@@ -104,11 +118,15 @@ const Game = () => {
   return (
     <div className="game">
       <div className="gamePanel">
-        {difficultySelected &&
-          !gameOver &&
-          ((<button onClick={shuffle}>Restart</button>),
-          (<p>turns:{turns}</p>))}
-        {!difficultySelected && !gameOver && (
+        {difficultySelected && !gameOver && !gameWon && (
+          <>
+            <button onClick={shuffle}>Restart</button>
+            <p>Turns: {turns}</p>
+            <p>Pairs Found: {pairsFound}</p>
+            <p>Pairs Remaining to Win: {pairsRemaining}</p>
+          </>
+        )}
+        {(!difficultySelected || gameOver || gameWon) && (
           <Difficulties
             setDifficulty={(difficulty) => {
               setDifficulty(difficulty)
@@ -123,40 +141,26 @@ const Game = () => {
             setRemainingTurns={setRemainingTurns}
           />
         )}
-        {difficulty === 'normal' && (
+        {!gameOver && difficulty === 'normal' && (
           <>
             <p>
-              Elapsed Time: {elapsedTime} minutes , Remaining Time:{' '}
+              Elapsed Time: {elapsedTime} minutes, Remaining Time:{' '}
               {remainingTime} minutes
             </p>
           </>
         )}
-        {difficulty === 'challenging' && remainingTurns !== null && (
-          <>
-            <p>
-              Elapsed Time: {elapsedTime} minutes , Remaining Time:{' '}
-              {remainingTime} minutes , Remaining Turns: {remainingTurns}
-            </p>
-          </>
-        )}
-        {gameOver && !difficultySelected && (
-          <Difficulties
-            setDifficulty={(difficulty) => {
-              setDifficulty(difficulty)
-              setDifficultySelected(true)
-              shuffle()
-            }}
-            setGameOver={setGameOver}
-            setTurns={setTurns}
-            shuffle={shuffle}
-            setElapsedTime={setElapsedTime}
-            setRemainingTime={setRemainingTime}
-            setRemainingTurns={setRemainingTurns}
-          />
-        )}
-        {gameOver && <p>Game Over! Refresh to play again.</p>}
+        {!gameOver &&
+          difficulty === 'challenging' &&
+          remainingTurns !== null && (
+            <>
+              <p>
+                Elapsed Time: {elapsedTime} minutes, Remaining Time:{' '}
+                {remainingTime} minutes, Remaining Turns: {remainingTurns}
+              </p>
+            </>
+          )}
       </div>
-      {!gameOver ? (
+      {!gameOver && !gameWon ? (
         <div className="card-grid">
           {cards.map((card) => (
             <Card
@@ -168,8 +172,27 @@ const Game = () => {
             />
           ))}
         </div>
+      ) : gameWon ? (
+        <>
+          <h1 className="winMessage">Congratulations! You Won!</h1>
+        </>
       ) : (
-        <p className="over">Game Over! </p>
+        <>
+          <p className="over">Game Over!</p>
+          <Difficulties
+            setDifficulty={(difficulty) => {
+              setDifficulty(difficulty)
+              setDifficultySelected(true)
+              shuffle()
+            }}
+            setGameOver={setGameOver}
+            setTurns={setTurns}
+            shuffle={shuffle}
+            setElapsedTime={setElapsedTime}
+            setRemainingTime={setRemainingTime}
+            setRemainingTurns={setRemainingTurns}
+          />
+        </>
       )}
     </div>
   )
