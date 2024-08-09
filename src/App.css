@@ -8,11 +8,13 @@ body {
   color: whitesmoke;
   background-image: url('/public/img/background.jpg');
   background-size: cover;
+  background-position: center;
 }
 
 .app {
   max-width: 1000px;
   margin: 40px auto;
+  padding: 0 20px;
 }
 
 button {
@@ -127,4 +129,62 @@ p:hover {
 .difficulties button:hover,
 .gamePanel button:hover {
   background-color: #222;
+}
+
+@media (max-width: 768px) {
+  .app {
+    margin: 20px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    width: 150px;
+    height: 150px;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  .over {
+    font-size: 3rem;
+  }
+
+  .gamePanel {
+    padding: 1rem;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 1.2em;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .card {
+    width: 120px;
+    height: 120px;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  .over {
+    font-size: 2rem;
+  }
+
+  .gamePanel {
+    padding: 0.5rem;
+    max-width: 95%;
+  }
 }
