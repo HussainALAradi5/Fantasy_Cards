@@ -23,6 +23,7 @@ const Game = () => {
   const [difficulty, setDifficulty] = useState('easy')
   const [gameOver, setGameOver] = useState(false)
   const [remainingTurns, setRemainingTurns] = useState(null)
+  const [difficultySelected, setDifficultySelected] = useState(false)
 
   const shuffle = () => {
     const shuffledCards = [...images, ...images]
@@ -39,6 +40,7 @@ const Game = () => {
     setSecondCard(null)
     setGameOver(false)
     setSelected(false)
+    setDifficultySelected(true) // Mark difficulty as selected after shuffle
   }
 
   const isFlipped = (card) => {
@@ -102,10 +104,14 @@ const Game = () => {
   return (
     <div className="game">
       <div className="gamePanel">
-        <button onClick={shuffle}>restart</button>
+        {difficultySelected && <button onClick={shuffle}>Restart</button>}
         <p>Turns: {turns}</p>
         <Difficulties
-          setDifficulty={setDifficulty}
+          setDifficulty={(difficulty) => {
+            setDifficulty(difficulty)
+            setDifficultySelected(false)
+            shuffle()
+          }}
           setGameOver={setGameOver}
           setTurns={setTurns}
           shuffle={shuffle}
@@ -144,7 +150,7 @@ const Game = () => {
           ))}
         </div>
       ) : (
-        <p>Game Over! Refresh to play again.</p>
+        <p className="over">Game Over! Refresh to play again.</p>
       )}
     </div>
   )

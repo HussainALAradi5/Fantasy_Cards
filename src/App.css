@@ -104,10 +104,17 @@ button:hover {
 }
 
 p {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 1rem 0;
+  color: aqua;
 }
-
+p:hover {
+  color: whitesmoke;
+  transition: 1.5s;
+}
+.over {
+  font-size: 4rem;
+}
 .difficulties button {
   margin: 0.5rem;
 }
