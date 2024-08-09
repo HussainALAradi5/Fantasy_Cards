@@ -115,15 +115,18 @@ const Game = () => {
         />
         {difficulty === 'normal' && (
           <>
-            <p>Elapsed Time: {elapsedTime} minutes</p>
-            <p>Remaining Time: {remainingTime} minutes</p>
+            <p>
+              Elapsed Time: {elapsedTime} minutes , Remaining Time:{' '}
+              {remainingTime} minutes
+            </p>
           </>
         )}
         {difficulty === 'challenging' && remainingTurns !== null && (
           <>
-            <p>Elapsed Time: {elapsedTime} minutes</p>
-            <p>Remaining Time: {remainingTime} minutes</p>
-            <p>Remaining Turns: {remainingTurns}</p>
+            <p>
+              Elapsed Time: {elapsedTime} minutes , Remaining Time:{' '}
+              {remainingTime} minutes , Remaining Turns: {remainingTurns}
+            </p>
           </>
         )}
         {gameOver && <p>Game Over!</p>}
