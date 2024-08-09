@@ -104,9 +104,10 @@ const Game = () => {
   return (
     <div className="game">
       <div className="gamePanel">
-        {difficultySelected && !gameOver && (
-          <button onClick={shuffle}>Restart</button>
-        )}
+        {difficultySelected &&
+          !gameOver &&
+          ((<button onClick={shuffle}>Restart</button>),
+          (<p>turns:{turns}</p>))}
         {!difficultySelected && !gameOver && (
           <Difficulties
             setDifficulty={(difficulty) => {
