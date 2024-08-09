@@ -181,19 +181,6 @@ const Game = () => {
       ) : (
         <>
           <p className="over">Game Over!</p>
-          <Difficulties
-            setDifficulty={(difficulty) => {
-              setDifficulty(difficulty)
-              setDifficultySelected(true)
-              shuffle()
-            }}
-            setGameOver={setGameOver}
-            setTurns={setTurns}
-            shuffle={shuffle}
-            setElapsedTime={setElapsedTime}
-            setRemainingTime={setRemainingTime}
-            setRemainingTurns={setRemainingTurns}
-          />
         </>
       )}
     </div>
