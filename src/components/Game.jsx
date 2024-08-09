@@ -127,7 +127,11 @@ const Game = () => {
         <p>Turns: {turns}</p>
         {difficulty === 'normal' && (
           <>
-            <p>Elapsed Time: {elapsedTime}s</p>
+            <p>
+              Elapsed Time: <br />
+              {Math.floor(elapsedTime / 60)}: {elapsedTime % 60}
+              minutes
+            </p>
             <p>
               Remaining Time: {Math.floor(remainingTime / 60)}:
               {remainingTime % 60} minutes
