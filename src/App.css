@@ -49,6 +49,7 @@ button:hover {
   width: 250px;
   height: 350px;
   perspective: 1000px;
+  cursor: pointer;
 }
 
 .card-inner {

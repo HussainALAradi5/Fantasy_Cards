@@ -71,6 +71,7 @@ const Game = () => {
     setFirstCard(null)
     setSecondCard(null)
     setTurns(turns + 1)
+    setSelected(false) // Reset selected to false to allow further clicks
     if (difficulty === 'challenging' && remainingTurns !== null) {
       setRemainingTurns((prev) => prev - 1)
       if (remainingTurns <= 0) {
