@@ -4,16 +4,14 @@ const Card = ({ card, handleCard, flipped, disabled }) => {
       handleCard(card)
     }
   }
+
   return (
-    <div className="card">
-      <div className={flipped ? 'flipped' : ''}>
-        <img src={card.src} className="front" alt="card-front" />
-        <img
-          src="/img/cover.png"
-          onClick={handleClick}
-          alt="card-back"
-          className="back"
-        />
+    <div className={`card ${flipped ? 'flipped' : ''}`} onClick={handleClick}>
+      <div className="card-inner">
+        <div className="card-face card-back"></div>
+        <div className="card-face card-front">
+          <img src={card.src} alt="card-front" />
+        </div>
       </div>
     </div>
   )
