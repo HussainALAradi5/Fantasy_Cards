@@ -32,7 +32,7 @@ const Game = () => {
     setTurns(0)
     setElapsedTime(0)
     setRemainingTime(
-      difficulty === 'normal' || difficulty === 'challenging' ? 180 : 0
+      difficulty === 'normal' || difficulty === 'challenging' ? 3 : 0
     )
     setRemainingTurns(difficulty === 'challenging' ? 20 : null)
     setFirstCard(null)
@@ -71,7 +71,7 @@ const Game = () => {
     setFirstCard(null)
     setSecondCard(null)
     setTurns(turns + 1)
-    setSelected(false) // Reset selected to false to allow further clicks
+    setSelected(false)
     if (difficulty === 'challenging' && remainingTurns !== null) {
       setRemainingTurns((prev) => prev - 1)
       if (remainingTurns <= 0) {
@@ -80,33 +80,49 @@ const Game = () => {
     }
   }
 
+  useEffect(() => {
+    let timer
+    if (difficulty === 'normal' || difficulty === 'challenging') {
+      timer = setInterval(() => {
+        setElapsedTime((prev) => prev + 1)
+        setRemainingTime((prev) => {
+          if (prev <= 1) {
+            setGameOver(true)
+            clearInterval(timer)
+            return 0
+          }
+          return prev - 1
+        })
+      }, 60000)
+    }
+
+    return () => clearInterval(timer)
+  }, [difficulty])
+
   return (
     <div className="game">
-      <Difficulties
-        setDifficulty={setDifficulty}
-        setGameOver={setGameOver}
-        setTurns={setTurns}
-        shuffle={shuffle}
-        setElapsedTime={setElapsedTime}
-        setRemainingTime={setRemainingTime}
-        setRemainingTurns={setRemainingTurns}
-      />
       <div className="gamePanel">
         <button onClick={shuffle}>New Game</button>
         <p>Turns: {turns}</p>
+        <Difficulties
+          setDifficulty={setDifficulty}
+          setGameOver={setGameOver}
+          setTurns={setTurns}
+          shuffle={shuffle}
+          setElapsedTime={setElapsedTime}
+          setRemainingTime={setRemainingTime}
+          setRemainingTurns={setRemainingTurns}
+        />
         {difficulty === 'normal' && (
           <>
-            <p>Elapsed Time: {elapsedTime}s</p>
-            <p>
-              Remaining Time: {Math.floor(remainingTime / 60)}:
-              {remainingTime % 60}
-            </p>
+            <p>Elapsed Time: {elapsedTime} minutes</p>
+            <p>Remaining Time: {remainingTime} minutes</p>
           </>
         )}
         {difficulty === 'challenging' && remainingTurns !== null && (
           <>
-            <p>Elapsed Time: {elapsedTime}s</p>
-            <p>Remaining Time: {remainingTime} s</p>
+            <p>Elapsed Time: {elapsedTime} minutes</p>
+            <p>Remaining Time: {remainingTime} minutes</p>
             <p>Remaining Turns: {remainingTurns}</p>
           </>
         )}
