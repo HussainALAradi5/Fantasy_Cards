@@ -1,6 +1,8 @@
-const Card = ({ card, handleCard, flipped }) => {
+const Card = ({ card, handleCard, flipped, disabled }) => {
   const handleClick = () => {
-    handleCard(card)
+    if (!disabled) {
+      handleCard(card)
+    }
   }
   return (
     <div className="card">

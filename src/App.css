@@ -72,3 +72,12 @@ button:hover {
   transform: rotateY(90deg);
   transition-delay: 0s;
 }
+.gamePanel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3rem;
+}
+p {
+  font-size: 2rem;
+}
