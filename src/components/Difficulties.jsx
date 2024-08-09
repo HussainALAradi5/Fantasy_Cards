@@ -34,7 +34,7 @@ const Difficulties = ({
             setGameOver(true)
             return 0
           }
-          return prevTime - 60 // Decrease time by one minute
+          return prevTime - 60
         })
       } else if (difficulty === 'challenging') {
         setRemainingTurns((prevTurns) => {
@@ -46,7 +46,7 @@ const Difficulties = ({
           return prevTurns
         })
       }
-    }, 60000) // Timer interval set to one minute
+    }, 60000)
     setTimer(newTimer)
   }
 

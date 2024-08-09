@@ -17,24 +17,26 @@ body {
 
 button {
   border: 2px solid whitesmoke;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-weight: bold;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  background-color: transparent;
+  color: whitesmoke;
+  transition: all 0.3s ease;
 }
 
 button:hover {
   background-color: darkblue;
   color: wheat;
-  transition: 1.5s;
-  border-color: black;
-  box-shadow: 1rem 1rem 1rem black;
+  border-color: darkblue;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 .mainContainer-h1:hover {
   color: darkcyan;
-  transition: 1.5s;
+  transition: color 0.5s ease;
   text-decoration: underline;
 }
 
@@ -90,12 +92,30 @@ button:hover {
 
 .gamePanel {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 3rem;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
 }
 
 p {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.difficulties button {
+  margin: 0.5rem;
+  background-color: #444;
+}
+
+.difficulties button:hover {
+  background-color: #222;
+}
+
+.gamePanel button {
+  margin-top: 1rem;
 }
