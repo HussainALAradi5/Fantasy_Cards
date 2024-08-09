@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Card from './Card'
 import Difficulties from './Difficulties'
 
@@ -168,7 +168,7 @@ const Game = () => {
           ))}
         </div>
       ) : (
-        <p className="over">Game Over! Refresh to play again.</p>
+        <p className="over">Game Over! </p>
       )}
     </div>
   )
