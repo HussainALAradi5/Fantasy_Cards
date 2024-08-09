@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react'
 
-const Difficulties = ({ setDifficulty, setGameOver, setTurns, shuffle }) => {
+const Difficulties = ({
+  setDifficulty,
+  setGameOver,
+  setTurns,
+  shuffle,
+  setElapsedTime,
+  setRemainingTime,
+  setRemainingTurns
+}) => {
   const [difficulty, setLocalDifficulty] = useState('easy')
   const [timer, setTimer] = useState(null)
-  const [remainingTurns, setRemainingTurns] = useState(null)
 
   useEffect(() => {
-    if (difficulty === 'normal') {
+    if (difficulty === 'normal' || difficulty === 'challenging') {
       startTimer()
-    } else if (difficulty === 'challenging') {
-      setRemainingTurns(20)
     } else {
       stopTimer()
     }
@@ -18,10 +23,31 @@ const Difficulties = ({ setDifficulty, setGameOver, setTurns, shuffle }) => {
   }, [difficulty])
 
   const startTimer = () => {
-    if (difficulty === 'normal') {
-      const newTimer = setInterval(() => {}, 1000)
-      setTimer(newTimer)
-    }
+    if (timer) return
+
+    const newTimer = setInterval(() => {
+      setElapsedTime((prevTime) => prevTime + 1)
+      if (difficulty === 'normal' || difficulty === 'challenging') {
+        setRemainingTime((prevTime) => {
+          if (prevTime <= 0) {
+            clearInterval(newTimer)
+            setGameOver(true)
+            return 0
+          }
+          return prevTime - 1
+        })
+      } else if (difficulty === 'challenging') {
+        setRemainingTurns((prevTurns) => {
+          if (prevTurns <= 0) {
+            clearInterval(newTimer)
+            setGameOver(true)
+            return 0
+          }
+          return prevTurns
+        })
+      }
+    }, 1000)
+    setTimer(newTimer)
   }
 
   const stopTimer = () => {
@@ -38,22 +64,19 @@ const Difficulties = ({ setDifficulty, setGameOver, setTurns, shuffle }) => {
     setTurns(0)
     shuffle()
     if (diff === 'challenging') {
+      setElapsedTime(0)
+      setRemainingTime(180)
       setRemainingTurns(20)
+    } else if (diff === 'normal') {
+      setElapsedTime(0)
+      setRemainingTime(180)
+      setRemainingTurns(null)
     } else {
       setRemainingTurns(null)
+      setRemainingTime(null)
     }
     stopTimer()
   }
-
-  useEffect(() => {
-    if (
-      difficulty === 'challenging' &&
-      remainingTurns !== null &&
-      remainingTurns <= 0
-    ) {
-      setGameOver(true)
-    }
-  }, [remainingTurns, difficulty])
 
   return (
     <div className="difficulties">
