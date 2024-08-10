@@ -46,13 +46,14 @@ button:hover {
 .card-grid {
   margin-top: 40px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(4, 1fr); /* Default to 4 columns */
+  gap: 20px;
+  width: 100%;
 }
 
 .card {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Maintains aspect ratio of cards */
   perspective: 1000px;
   cursor: pointer;
 }
@@ -135,18 +136,13 @@ p:hover {
 }
 
 @media (max-width: 768px) {
-  .app {
-    margin: 20px;
-  }
-
   .card-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
   }
 
   .card {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
   }
 
   p {
@@ -165,18 +161,13 @@ p:hover {
 }
 
 @media (max-width: 480px) {
-  body {
-    font-size: 1.2em;
-  }
-
   .card-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
   }
 
   .card {
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
   }
 
   p {
