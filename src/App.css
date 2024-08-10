@@ -110,13 +110,16 @@ p {
   margin: 1rem 0;
   color: aqua;
 }
+
 p:hover {
   color: whitesmoke;
   transition: 1.5s;
 }
+
 .over {
   font-size: 4rem;
 }
+
 .difficulties button {
   margin: 0.5rem;
 }
@@ -137,10 +140,8 @@ p:hover {
   }
 
   .card-grid {
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    justify-content: center;
   }
 
   .card {
@@ -169,8 +170,8 @@ p:hover {
   }
 
   .card-grid {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
   }
 
   .card {
