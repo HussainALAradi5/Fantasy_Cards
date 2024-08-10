@@ -123,9 +123,10 @@ const Game = () => {
         {difficultySelected && !gameOver && !gameWon && (
           <>
             <button onClick={shuffle}>Restart</button>
-            <p>Turns: {turns}</p>
-            <p>Pairs Found: {pairsFound}</p>
-            <p>Pairs Remaining to Win: {pairsRemaining}</p>
+            <p>
+              Turns: {turns} , Pairs Found: {pairsFound}, Pairs Remaining to
+              Win: {pairsRemaining}
+            </p>
           </>
         )}
         {(!difficultySelected || gameOver || gameWon) && (
