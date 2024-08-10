@@ -8,7 +8,6 @@ body {
   color: whitesmoke;
   background-image: url('/public/img/background.jpg');
   background-size: cover;
-  background-position: center;
 }
 
 .app {
