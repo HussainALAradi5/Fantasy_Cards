@@ -4,7 +4,7 @@
 
 ### By: Hussain Al Aradi
 
-#### [Gmail] (hussainaradi.ha@gmail.com) | [GitHub](https://github.com/HussainALAradi5) | [LinkedIn](https://www.linkedin.com/in/hussainalaradi/)
+#### [Gmail](hussainaradi.ha@gmail.com) | [GitHub](https://github.com/HussainALAradi5) | [LinkedIn](https://www.linkedin.com/in/hussainalaradi/)
 
 ---
 
@@ -53,7 +53,7 @@
 
 ##### google for images,
 
-##### inspired by:the traditional  card memro game
+##### inspired by:the traditional  card memroy game
 
 ##### google for photos
 
