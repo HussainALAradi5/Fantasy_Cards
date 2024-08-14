@@ -35,10 +35,9 @@
 ##### image header 1
 
 ![intro](./public/showcase/intro.png)
-
-##### image header 2
-## ![showcase](./public/showcase/easy.png)
-## ![showcase](./public/showcase/normal.png)
+#### showcase:
+## 1- easy ![showcase](./public/showcase/easy.png)
+## 2-normal ![showcase](./public/showcase/normal.png)
 
 
 ### **_Future Updates_**
