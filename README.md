@@ -55,6 +55,5 @@
 
 ##### inspired by:the traditional  card memroy game
 
-##### google for photos
 
 ---
