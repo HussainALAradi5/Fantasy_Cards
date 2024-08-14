@@ -32,12 +32,12 @@
 
 ### **_Screenshots_**
 
-##### image header 1
+##### intro
 
 ![intro](./public/showcase/intro.png)
 #### showcase:
-## 1- easy ![showcase](./public/showcase/easy.png)
-## 2-normal ![showcase](./public/showcase/normal.png)
+##### 1- easy ![showcase](./public/showcase/easy.png)
+##### 2-normal ![showcase](./public/showcase/normal.png)
 
 
 ### **_Future Updates_**
