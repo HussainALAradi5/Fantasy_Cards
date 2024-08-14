@@ -4,7 +4,7 @@
 
 ### By: Hussain Al Aradi
 
-#### [Gmail](hussainaradi.ha@gmail.com) | [GitHub](https://github.com/HussainALAradi5) | [LinkedIn](https://www.linkedin.com/in/hussainalaradi/)
+#### [Gmail] (hussainaradi.ha@gmail.com) | [GitHub](https://github.com/HussainALAradi5) | [LinkedIn](https://www.linkedin.com/in/hussainalaradi/)
 
 ---
 
