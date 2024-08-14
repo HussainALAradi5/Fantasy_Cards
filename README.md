@@ -1,4 +1,4 @@
-# [Fantasy_Card]
+# Fantasy_Card
 
 ## Date: 14/8/2024
 
