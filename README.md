@@ -38,7 +38,8 @@
 #### showcase:
 ##### 1- easy ![showcase](./public/showcase/easy.png)
 ##### 2-normal ![showcase](./public/showcase/normal.png)
-
+#### animated showcase:
+![video](./public/showcase/gameplay(easy+normal).gif)
 
 ### **_Future Updates_**
 
