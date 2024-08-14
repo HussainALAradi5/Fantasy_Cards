@@ -39,7 +39,7 @@
 ##### image header 2
 ## ![showcase](./public/showcase/easy.png)
 ## ![showcase](./public/showcase/normal.png.png)
-## ![showcase](./public/showcase/challenge.png.png)
+
 
 ### **_Future Updates_**
 
