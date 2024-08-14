@@ -55,8 +55,13 @@ button:hover {
   aspect-ratio: 1 / 1;
   perspective: 1000px;
   cursor: pointer;
+  opacity: 0.8;
 }
-
+ .card:hover{
+  transition: 1.5s;
+  opacity: 1;
+  box-shadow: 1rem 1rem 1rem royalblue;
+ }
 .card-inner {
   width: 100%;
   height: 100%;
